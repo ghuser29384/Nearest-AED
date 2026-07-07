@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import math
+import plistlib
 import re
 import sqlite3
 import time
@@ -22,7 +23,7 @@ OFFLINE_CONTRACT_SHA256 = {
     "AEDNowOffline/AEDRepository.swift": "124b31e2b9b7f2591ec74e5e5b4d06c62d183001a33caabadfff2ae982c5b11b",
     "AEDNowOffline/AEDNowOfflineApp.swift": "e7195dba39554b7a075dfe8903326ba1a1708c756ea026efaedc9309ac7db115",
     "AEDNowOffline/EmergencyHomeView.swift": "153bc7359c5117075324a5fb2ad3cd877a2008973a5a6d815349db2f2d0a10bb",
-    "AEDNowOffline/Info.plist": "80417c92409ab9d63f5f202a5b447828eb462e3bb7ed438bb39e54938cd93572",
+    "AEDNowOffline/Info.plist": "72c06cc3d6d3788777d9aed5498e55e115dba07e3c1d8b002e1e7b102a89abb7",
 }
 
 NETWORK_PATTERNS = ("URLSession", "MKMapView", "CLGeocoder", "MKDirections", "http://", "https://")
@@ -268,6 +269,21 @@ def check_info_plist_update_configuration() -> None:
     offenders = [pattern for pattern in FORBIDDEN_INFO_PLIST_PATTERNS if pattern in text]
     if offenders:
         fail("background/update plist configuration found: " + ", ".join(offenders))
+
+    plist = plistlib.loads(INFO_PLIST.read_bytes())
+    required_keys = {
+        "CFBundleExecutable": "$(EXECUTABLE_NAME)",
+        "CFBundleIdentifier": "$(PRODUCT_BUNDLE_IDENTIFIER)",
+        "CFBundleInfoDictionaryVersion": "6.0",
+        "CFBundlePackageType": "APPL",
+    }
+    mismatches = [
+        f"{key}={plist.get(key)!r}, expected {expected!r}"
+        for key, expected in required_keys.items()
+        if plist.get(key) != expected
+    ]
+    if mismatches:
+        fail("install-critical plist metadata is missing or incorrect: " + "; ".join(mismatches))
 
 
 def check_device_specific_source_invariants() -> None:
