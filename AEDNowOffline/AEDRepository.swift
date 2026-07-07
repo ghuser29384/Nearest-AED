@@ -116,12 +116,6 @@ struct AEDSourceMetadata: Equatable {
             warnings.append("AED source reliability is unknown. Verify with emergency services where possible.")
         }
 
-        if licence?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
-            warnings.append("AED source licence is unknown. Do not redistribute this data until the licence permits app/database use.")
-        } else if licence?.localizedCaseInsensitiveContains("unknown") == true {
-            warnings.append("AED source licence is unknown. Do not redistribute this data until the licence permits app/database use.")
-        }
-
         if let newestSourceUpdatedAt {
             let threshold = TimeInterval(staleAfterDays * 24 * 60 * 60)
             if now.timeIntervalSince(newestSourceUpdatedAt) > threshold {
@@ -129,6 +123,12 @@ struct AEDSourceMetadata: Equatable {
             }
         } else {
             warnings.append("AED data source update date is unknown.")
+        }
+
+        if licence?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true {
+            warnings.append("AED source licence is unknown. Do not redistribute this data until the licence permits app/database use.")
+        } else if licence?.localizedCaseInsensitiveContains("unknown") == true {
+            warnings.append("AED source licence is unknown. Do not redistribute this data until the licence permits app/database use.")
         }
 
         return warnings

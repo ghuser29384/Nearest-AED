@@ -22,6 +22,7 @@ final class ImporterPolicyTests: XCTestCase {
         XCTAssertTrue(script.contains("parser.add_argument(\"--version\", required=True"))
         XCTAssertTrue(script.contains("parser.add_argument(\"--licence\", required=True"))
         XCTAssertTrue(script.contains("licence_text TEXT"))
-        XCTAssertTrue(script.contains("\"signature_verification_status\""))
+        XCTAssertTrue(script.contains("\"dataset_id\""))
+        XCTAssertTrue(script.contains("\"schema_version\""))
     }
 }
