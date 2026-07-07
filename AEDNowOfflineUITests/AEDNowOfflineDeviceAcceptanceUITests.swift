@@ -14,7 +14,7 @@ final class AEDNowOfflineDeviceAcceptanceUITests: XCTestCase {
     func testEmergencyHomeShowsIPhone13PrimaryControls() {
         launch()
 
-        XCTAssertTrue(app.staticTexts["Call 999 or 112 now. If someone is unresponsive and not breathing normally, start CPR. If you are alone with the person, do not leave them unless instructed by emergency services. Send someone else for the AED if possible."].waitForExistence(timeout: 2))
+        XCTAssertTrue(staticText(matching: "Call 999 or 112 now. If someone is unresponsive and not breathing normally, start CPR. If you are alone with the person, do not leave them unless instructed by emergency services. Send someone else for the AED if possible.").waitForExistence(timeout: 2))
         XCTAssertTrue(app.buttons["Call 999 / 112"].exists)
         XCTAssertTrue(app.buttons["Find nearest AED"].exists)
         XCTAssertTrue(app.buttons["I am with the person"].exists)
@@ -114,6 +114,10 @@ final class AEDNowOfflineDeviceAcceptanceUITests: XCTestCase {
 
     private func launch() {
         app.launch()
+    }
+
+    private func staticText(matching label: String) -> XCUIElement {
+        app.staticTexts.matching(NSPredicate(format: "label == %@", label)).firstMatch
     }
 
     private func baseEnvironment() -> [String: String] {
