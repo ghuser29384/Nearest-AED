@@ -1,9 +1,9 @@
 # AED Now Offline Safety QA Audit
 
-Audit date: 2026-07-07  
-Audited commit: `2a47d93`  
-Target: iPhone 13, iOS 18 runtime, offline emergency use, personal-use prototype only.  
-Primary CI evidence: GitHub Actions run `28859484004`, job `85594216135`, artifact `iphone13-qa-evidence` (`8135174679`, 2.8 MB). The artifact contains `QA_Evidence/iPhone13/iphone13-acceptance.xcresult` with screenshot and accessibility attachments.
+Audit date: 2026-07-07
+Audited commit: `5b596f3`
+Target: iPhone 13, iOS 18 runtime, offline emergency use, personal-use prototype only.
+Primary CI evidence: GitHub Actions run `28860110597`, job `85596292305`, artifact `iphone13-qa-evidence` (`8135420408`, 2.8 MB). The artifact contains `QA_Evidence/iPhone13/iphone13-acceptance.xcresult` with screenshot and accessibility attachments.
 
 ## Executive Verdict
 
@@ -40,7 +40,7 @@ The app passes the current automated iPhone 13 acceptance suite and has no app-l
 
 ## Acceptance Test Results
 
-Evidence: passing run `28859484004` on `macos-15`, Xcode-selected runner, iPhone 13 simulator on installed iOS 18 runtime.
+Evidence: passing run `28860110597` on `macos-15`, Xcode-selected runner, iPhone 13 simulator on installed iOS 18 runtime.
 
 | Acceptance test | Result | Evidence |
 |---|---:|---|
@@ -134,4 +134,3 @@ Limitation: CI cannot enable the live iOS Voice Control "Show names" overlay. Th
 | High | `AEDNowOffline/AppRouting.swift::EmergencyCopy.dataWarning` | Change to exact required wording: "In an emergency, call 999 or 112. AED data may be incomplete, outdated, inaccessible, or wrong." |
 | Medium | `.github/workflows/iphone13-acceptance.yml` / UI tests | Add explicit artifact export documentation and optionally publish sanitized screenshots for reviewers without GitHub auth. |
 | Medium | Physical QA procedure | Run the physical-device plan before any real use; record device model, iOS build, Airplane Mode state, and screenshots. |
-
