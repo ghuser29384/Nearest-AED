@@ -41,36 +41,35 @@ struct OpenWithPatientModeIntent: AppIntent {
 }
 
 struct AEDAppShortcuts: AppShortcutsProvider {
+    @AppShortcutsBuilder
     static var appShortcuts: [AppShortcut] {
-        [
-            AppShortcut(
-                intent: FindNearestAEDIntent(),
-                phrases: [
-                    "Find nearest AED in \(.applicationName)",
-                    "Find defibrillator with \(.applicationName)",
-                    "Nearest AED with \(.applicationName)"
-                ],
-                shortTitle: "Find nearest AED",
-                systemImageName: "bolt.heart.fill"
-            ),
-            AppShortcut(
-                intent: OpenRunnerModeIntent(),
-                phrases: [
-                    "Runner mode in \(.applicationName)",
-                    "I am the AED runner in \(.applicationName)"
-                ],
-                shortTitle: "Runner Mode",
-                systemImageName: "figure.run"
-            ),
-            AppShortcut(
-                intent: OpenWithPatientModeIntent(),
-                phrases: [
-                    "I am with the person in \(.applicationName)",
-                    "With patient mode in \(.applicationName)"
-                ],
-                shortTitle: "With Patient",
-                systemImageName: "person.fill"
-            )
-        ]
+        AppShortcut(
+            intent: FindNearestAEDIntent(),
+            phrases: [
+                "Find nearest AED in \(.applicationName)",
+                "Find defibrillator with \(.applicationName)",
+                "Nearest AED with \(.applicationName)"
+            ],
+            shortTitle: "Find nearest AED",
+            systemImageName: "bolt.heart.fill"
+        )
+        AppShortcut(
+            intent: OpenRunnerModeIntent(),
+            phrases: [
+                "Runner mode in \(.applicationName)",
+                "I am the AED runner in \(.applicationName)"
+            ],
+            shortTitle: "Runner Mode",
+            systemImageName: "figure.run"
+        )
+        AppShortcut(
+            intent: OpenWithPatientModeIntent(),
+            phrases: [
+                "I am with the person in \(.applicationName)",
+                "With patient mode in \(.applicationName)"
+            ],
+            shortTitle: "With Patient",
+            systemImageName: "person.fill"
+        )
     }
 }

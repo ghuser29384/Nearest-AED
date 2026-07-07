@@ -20,7 +20,7 @@ README = ROOT / "README.md"
 APP_SOURCE_MANIFEST = ROOT / "Tools" / "app_source_manifest.txt"
 OFFLINE_CONTRACT_SHA256 = {
     "AEDNowOffline/AEDRepository.swift": "124b31e2b9b7f2591ec74e5e5b4d06c62d183001a33caabadfff2ae982c5b11b",
-    "AEDNowOffline/AEDNowOfflineApp.swift": "8117a3705f24203d157f613487a147670e39a8bfb79d8dcab7d7623cea2f1eb2",
+    "AEDNowOffline/AEDNowOfflineApp.swift": "e7195dba39554b7a075dfe8903326ba1a1708c756ea026efaedc9309ac7db115",
     "AEDNowOffline/EmergencyHomeView.swift": "153bc7359c5117075324a5fb2ad3cd877a2008973a5a6d815349db2f2d0a10bb",
     "AEDNowOffline/Info.plist": "80417c92409ab9d63f5f202a5b447828eb462e3bb7ed438bb39e54938cd93572",
 }
@@ -295,6 +295,7 @@ def check_device_specific_source_invariants() -> None:
         "locationManager.requestOneShotLocation()",
         "headingManager.start()",
         "refreshNearest()",
+        "var dataLastUpdatedText: String",
         "@StateObject private var intentRouter = AppIntentRouter.shared",
         "model.open(requestedMode)",
         ".onReceive(intentRouter.$requestedMode.compactMap { $0 })",
@@ -314,6 +315,7 @@ def check_device_specific_source_invariants() -> None:
         '"Find nearest AED in \\(.applicationName)"',
         'shortTitle: "Find nearest AED"',
         "struct AEDAppShortcuts: AppShortcutsProvider",
+        "@AppShortcutsBuilder",
     )
     missing_intents = [pattern for pattern in required_intents if pattern not in intents]
     if missing_intents:

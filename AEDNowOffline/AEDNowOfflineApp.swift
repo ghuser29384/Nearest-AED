@@ -32,6 +32,24 @@ final class AEDAppModel: ObservableObject {
         return results[selectedIndex]
     }
 
+    var dataLastUpdatedText: String {
+        guard let metadata = searchService.metadata() else {
+            return "AED data source unavailable."
+        }
+
+        let recordCount = NumberFormatter.localizedString(from: NSNumber(value: metadata.recordCount), number: .decimal)
+        let dateText: String
+        if let newestSourceUpdatedAt = metadata.newestSourceUpdatedAt {
+            dateText = newestSourceUpdatedAt.formatted(date: .abbreviated, time: .omitted)
+        } else if let importedAt = metadata.importedAt {
+            dateText = importedAt.formatted(date: .abbreviated, time: .omitted)
+        } else {
+            dateText = "unknown date"
+        }
+
+        return "AED data: \(recordCount) records. Last updated: \(dateText)."
+    }
+
     init(
         repository: AEDRepositoryProtocol? = nil,
         settings: EmergencyRegionSettings = .unitedKingdom,
