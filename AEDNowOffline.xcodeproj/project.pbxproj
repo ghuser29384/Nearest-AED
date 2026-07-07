@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		300000000000000000000001 /* AEDNowOfflineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000001 /* AEDNowOfflineApp.swift */; };
+		300000000000000000000002 /* AppRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000002 /* AppRouting.swift */; };
+		300000000000000000000003 /* EmergencyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000003 /* EmergencyHomeView.swift */; };
+		300000000000000000000004 /* RunnerModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000004 /* RunnerModeView.swift */; };
+		300000000000000000000005 /* WithPatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000005 /* WithPatientView.swift */; };
+		300000000000000000000006 /* AEDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000006 /* AEDCardView.swift */; };
+		300000000000000000000007 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000007 /* LocationManager.swift */; };
+		300000000000000000000008 /* HeadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000008 /* HeadingManager.swift */; };
+		300000000000000000000009 /* AEDDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000009 /* AEDDatabase.swift */; };
+		30000000000000000000000A /* AEDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20100000000000000000000A /* AEDRepository.swift */; };
+		30000000000000000000000B /* AEDSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20100000000000000000000B /* AEDSearchService.swift */; };
+		30000000000000000000000C /* DistanceBearing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20100000000000000000000C /* DistanceBearing.swift */; };
+		30000000000000000000000D /* VoiceCommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20100000000000000000000D /* VoiceCommandManager.swift */; };
+		30000000000000000000000E /* SpeechOutputService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20100000000000000000000E /* SpeechOutputService.swift */; };
+		30000000000000000000000F /* EmergencyCallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20100000000000000000000F /* EmergencyCallService.swift */; };
+		300000000000000000000010 /* AEDAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000010 /* AEDAppIntents.swift */; };
+		30000000000000000000001A /* VoiceCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000014 /* VoiceCommand.swift */; };
+		30000000000000000000001B /* UITestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000015 /* UITestConfiguration.swift */; };
+		30000000000000000000001C /* UITestFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000016 /* UITestFixtures.swift */; };
+		30000000000000000000001E /* LocationSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000017 /* LocationSnapshot.swift */; };
+		300000000000000000000011 /* aed_seed.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 201000000000000000000011 /* aed_seed.sqlite */; };
+		300000000000000000000012 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 201000000000000000000012 /* libsqlite3.tbd */; };
+		300000000000000000000013 /* DistanceBearingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000001 /* DistanceBearingTests.swift */; };
+		300000000000000000000014 /* AEDSearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000002 /* AEDSearchServiceTests.swift */; };
+		300000000000000000000015 /* LocationFreshnessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000003 /* LocationFreshnessTests.swift */; };
+		300000000000000000000016 /* VoiceCommandParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000004 /* VoiceCommandParserTests.swift */; };
+		300000000000000000000017 /* iPhone13TargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000005 /* iPhone13TargetTests.swift */; };
+		300000000000000000000018 /* ImporterPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000006 /* ImporterPolicyTests.swift */; };
+		300000000000000000000019 /* AEDMetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000007 /* AEDMetadataTests.swift */; };
+		30000000000000000000001D /* AEDNowOfflineDeviceAcceptanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000008 /* AEDNowOfflineDeviceAcceptanceUITests.swift */; };
+		30000000000000000000001F /* UITestConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202000000000000000000009 /* UITestConfigurationTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		400000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 100000000000000000000001;
+			remoteInfo = AEDNowOffline;
+		};
+		400000000000000000000003 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 100000000000000000000001;
+			remoteInfo = AEDNowOffline;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		200000000000000000000001 /* AEDNowOffline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AEDNowOffline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000002 /* AEDNowOfflineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AEDNowOfflineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000003 /* AEDNowOfflineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AEDNowOfflineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		201000000000000000000001 /* AEDNowOfflineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDNowOfflineApp.swift; sourceTree = "<group>"; };
+		201000000000000000000002 /* AppRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouting.swift; sourceTree = "<group>"; };
+		201000000000000000000003 /* EmergencyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyHomeView.swift; sourceTree = "<group>"; };
+		201000000000000000000004 /* RunnerModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerModeView.swift; sourceTree = "<group>"; };
+		201000000000000000000005 /* WithPatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithPatientView.swift; sourceTree = "<group>"; };
+		201000000000000000000006 /* AEDCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDCardView.swift; sourceTree = "<group>"; };
+		201000000000000000000007 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		201000000000000000000008 /* HeadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingManager.swift; sourceTree = "<group>"; };
+		201000000000000000000009 /* AEDDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDDatabase.swift; sourceTree = "<group>"; };
+		20100000000000000000000A /* AEDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDRepository.swift; sourceTree = "<group>"; };
+		20100000000000000000000B /* AEDSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDSearchService.swift; sourceTree = "<group>"; };
+		20100000000000000000000C /* DistanceBearing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceBearing.swift; sourceTree = "<group>"; };
+		20100000000000000000000D /* VoiceCommandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCommandManager.swift; sourceTree = "<group>"; };
+		20100000000000000000000E /* SpeechOutputService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechOutputService.swift; sourceTree = "<group>"; };
+		20100000000000000000000F /* EmergencyCallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyCallService.swift; sourceTree = "<group>"; };
+		201000000000000000000010 /* AEDAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDAppIntents.swift; sourceTree = "<group>"; };
+		201000000000000000000011 /* aed_seed.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = aed_seed.sqlite; sourceTree = "<group>"; };
+		201000000000000000000012 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		201000000000000000000013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		201000000000000000000014 /* VoiceCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCommand.swift; sourceTree = "<group>"; };
+		201000000000000000000015 /* UITestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestConfiguration.swift; sourceTree = "<group>"; };
+		201000000000000000000016 /* UITestFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestFixtures.swift; sourceTree = "<group>"; };
+		201000000000000000000017 /* LocationSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSnapshot.swift; sourceTree = "<group>"; };
+		202000000000000000000001 /* DistanceBearingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceBearingTests.swift; sourceTree = "<group>"; };
+		202000000000000000000002 /* AEDSearchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDSearchServiceTests.swift; sourceTree = "<group>"; };
+		202000000000000000000003 /* LocationFreshnessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFreshnessTests.swift; sourceTree = "<group>"; };
+		202000000000000000000004 /* VoiceCommandParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCommandParserTests.swift; sourceTree = "<group>"; };
+		202000000000000000000005 /* iPhone13TargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPhone13TargetTests.swift; sourceTree = "<group>"; };
+		202000000000000000000006 /* ImporterPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImporterPolicyTests.swift; sourceTree = "<group>"; };
+		202000000000000000000007 /* AEDMetadataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDMetadataTests.swift; sourceTree = "<group>"; };
+		202000000000000000000008 /* AEDNowOfflineDeviceAcceptanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDNowOfflineDeviceAcceptanceUITests.swift; sourceTree = "<group>"; };
+		202000000000000000000009 /* UITestConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestConfigurationTests.swift; sourceTree = "<group>"; };
+		203000000000000000000001 /* seed_aeds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = seed_aeds.json; sourceTree = "<group>"; };
+		204000000000000000000001 /* import_aeds.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = import_aeds.py; sourceTree = "<group>"; };
+		204000000000000000000002 /* verify_offline_db.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = verify_offline_db.py; sourceTree = "<group>"; };
+		204000000000000000000003 /* run_iphone13_acceptance.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = run_iphone13_acceptance.sh; sourceTree = "<group>"; };
+		204000000000000000000004 /* validate_local.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = validate_local.sh; sourceTree = "<group>"; };
+		204000000000000000000005 /* app_source_manifest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = app_source_manifest.txt; sourceTree = "<group>"; };
+		205000000000000000000001 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		110000000000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000012 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		110000000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		110000000000000000000008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000004 /* AEDNowOffline */,
+				000000000000000000000007 /* AEDNowOfflineTests */,
+				00000000000000000000000A /* AEDNowOfflineUITests */,
+				000000000000000000000008 /* Data */,
+				000000000000000000000009 /* Tools */,
+				201000000000000000000012 /* libsqlite3.tbd */,
+				205000000000000000000001 /* README.md */,
+				000000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000001 /* AEDNowOffline.app */,
+				200000000000000000000002 /* AEDNowOfflineTests.xctest */,
+				200000000000000000000003 /* AEDNowOfflineUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		000000000000000000000004 /* AEDNowOffline */ = {
+			isa = PBXGroup;
+			children = (
+				201000000000000000000013 /* Info.plist */,
+				201000000000000000000001 /* AEDNowOfflineApp.swift */,
+				201000000000000000000002 /* AppRouting.swift */,
+				201000000000000000000003 /* EmergencyHomeView.swift */,
+				201000000000000000000004 /* RunnerModeView.swift */,
+				201000000000000000000005 /* WithPatientView.swift */,
+				201000000000000000000006 /* AEDCardView.swift */,
+				201000000000000000000017 /* LocationSnapshot.swift */,
+				201000000000000000000007 /* LocationManager.swift */,
+				201000000000000000000008 /* HeadingManager.swift */,
+				201000000000000000000009 /* AEDDatabase.swift */,
+				20100000000000000000000A /* AEDRepository.swift */,
+				20100000000000000000000B /* AEDSearchService.swift */,
+				20100000000000000000000C /* DistanceBearing.swift */,
+				201000000000000000000014 /* VoiceCommand.swift */,
+				20100000000000000000000D /* VoiceCommandManager.swift */,
+				20100000000000000000000E /* SpeechOutputService.swift */,
+				20100000000000000000000F /* EmergencyCallService.swift */,
+				201000000000000000000015 /* UITestConfiguration.swift */,
+				201000000000000000000016 /* UITestFixtures.swift */,
+				000000000000000000000005 /* AppIntents */,
+				000000000000000000000006 /* Resources */,
+			);
+			path = AEDNowOffline;
+			sourceTree = "<group>";
+		};
+		000000000000000000000005 /* AppIntents */ = {
+			isa = PBXGroup;
+			children = (
+				201000000000000000000010 /* AEDAppIntents.swift */,
+			);
+			path = AppIntents;
+			sourceTree = "<group>";
+		};
+		000000000000000000000006 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				201000000000000000000011 /* aed_seed.sqlite */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		000000000000000000000007 /* AEDNowOfflineTests */ = {
+			isa = PBXGroup;
+			children = (
+				202000000000000000000001 /* DistanceBearingTests.swift */,
+				202000000000000000000002 /* AEDSearchServiceTests.swift */,
+				202000000000000000000003 /* LocationFreshnessTests.swift */,
+				202000000000000000000004 /* VoiceCommandParserTests.swift */,
+				202000000000000000000005 /* iPhone13TargetTests.swift */,
+				202000000000000000000006 /* ImporterPolicyTests.swift */,
+				202000000000000000000007 /* AEDMetadataTests.swift */,
+				202000000000000000000009 /* UITestConfigurationTests.swift */,
+			);
+			path = AEDNowOfflineTests;
+			sourceTree = "<group>";
+		};
+		00000000000000000000000A /* AEDNowOfflineUITests */ = {
+			isa = PBXGroup;
+			children = (
+				202000000000000000000008 /* AEDNowOfflineDeviceAcceptanceUITests.swift */,
+			);
+			path = AEDNowOfflineUITests;
+			sourceTree = "<group>";
+		};
+		000000000000000000000008 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				203000000000000000000001 /* seed_aeds.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		000000000000000000000009 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				204000000000000000000001 /* import_aeds.py */,
+				204000000000000000000002 /* verify_offline_db.py */,
+				204000000000000000000003 /* run_iphone13_acceptance.sh */,
+				204000000000000000000004 /* validate_local.sh */,
+				204000000000000000000005 /* app_source_manifest.txt */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		100000000000000000000001 /* AEDNowOffline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 500000000000000000000002 /* Build configuration list for PBXNativeTarget "AEDNowOffline" */;
+			buildPhases = (
+				110000000000000000000001 /* Sources */,
+				110000000000000000000003 /* Frameworks */,
+				110000000000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AEDNowOffline;
+			productName = AEDNowOffline;
+			productReference = 200000000000000000000001 /* AEDNowOffline.app */;
+			productType = "com.apple.product-type.application";
+		};
+		100000000000000000000002 /* AEDNowOfflineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 500000000000000000000003 /* Build configuration list for PBXNativeTarget "AEDNowOfflineTests" */;
+			buildPhases = (
+				110000000000000000000004 /* Sources */,
+				110000000000000000000006 /* Frameworks */,
+				110000000000000000000005 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				400000000000000000000002 /* PBXTargetDependency */,
+			);
+			name = AEDNowOfflineTests;
+			productName = AEDNowOfflineTests;
+			productReference = 200000000000000000000002 /* AEDNowOfflineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		100000000000000000000003 /* AEDNowOfflineUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 500000000000000000000004 /* Build configuration list for PBXNativeTarget "AEDNowOfflineUITests" */;
+			buildPhases = (
+				110000000000000000000007 /* Sources */,
+				110000000000000000000008 /* Frameworks */,
+				110000000000000000000009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				400000000000000000000004 /* PBXTargetDependency */,
+			);
+			name = AEDNowOfflineUITests;
+			productName = AEDNowOfflineUITests;
+			productReference = 200000000000000000000003 /* AEDNowOfflineUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					100000000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					100000000000000000000002 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 100000000000000000000001;
+					};
+					100000000000000000000003 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 100000000000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = 500000000000000000000001 /* Build configuration list for PBXProject "AEDNowOffline" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 000000000000000000000002;
+			productRefGroup = 000000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				100000000000000000000001 /* AEDNowOffline */,
+				100000000000000000000002 /* AEDNowOfflineTests */,
+				100000000000000000000003 /* AEDNowOfflineUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		110000000000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000011 /* aed_seed.sqlite in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		110000000000000000000005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		110000000000000000000009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		110000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000002 /* AppRouting.swift in Sources */,
+				300000000000000000000003 /* EmergencyHomeView.swift in Sources */,
+				300000000000000000000004 /* RunnerModeView.swift in Sources */,
+				300000000000000000000005 /* WithPatientView.swift in Sources */,
+				300000000000000000000006 /* AEDCardView.swift in Sources */,
+				30000000000000000000001E /* LocationSnapshot.swift in Sources */,
+				300000000000000000000007 /* LocationManager.swift in Sources */,
+				300000000000000000000008 /* HeadingManager.swift in Sources */,
+				300000000000000000000009 /* AEDDatabase.swift in Sources */,
+				30000000000000000000000A /* AEDRepository.swift in Sources */,
+				30000000000000000000000B /* AEDSearchService.swift in Sources */,
+				30000000000000000000000C /* DistanceBearing.swift in Sources */,
+				30000000000000000000001A /* VoiceCommand.swift in Sources */,
+				30000000000000000000000D /* VoiceCommandManager.swift in Sources */,
+				30000000000000000000000E /* SpeechOutputService.swift in Sources */,
+				30000000000000000000000F /* EmergencyCallService.swift in Sources */,
+				300000000000000000000010 /* AEDAppIntents.swift in Sources */,
+				30000000000000000000001B /* UITestConfiguration.swift in Sources */,
+				30000000000000000000001C /* UITestFixtures.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		110000000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300000000000000000000013 /* DistanceBearingTests.swift in Sources */,
+				300000000000000000000014 /* AEDSearchServiceTests.swift in Sources */,
+				300000000000000000000015 /* LocationFreshnessTests.swift in Sources */,
+				300000000000000000000016 /* VoiceCommandParserTests.swift in Sources */,
+				300000000000000000000017 /* iPhone13TargetTests.swift in Sources */,
+				300000000000000000000018 /* ImporterPolicyTests.swift in Sources */,
+				300000000000000000000019 /* AEDMetadataTests.swift in Sources */,
+				30000000000000000000001F /* UITestConfigurationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		110000000000000000000007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30000000000000000000001D /* AEDNowOfflineDeviceAcceptanceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		400000000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 100000000000000000000001 /* AEDNowOffline */;
+			targetProxy = 400000000000000000000001 /* PBXContainerItemProxy */;
+		};
+		400000000000000000000004 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 100000000000000000000001 /* AEDNowOffline */;
+			targetProxy = 400000000000000000000003 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		600000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		600000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		600000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AEDNowOffline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aednowoffline.app;
+				PRODUCT_NAME = AEDNowOffline;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		600000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AEDNowOffline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aednowoffline.app;
+				PRODUCT_NAME = AEDNowOffline;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		600000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aednowoffline.appTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AEDNowOffline.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AEDNowOffline";
+			};
+			name = Debug;
+		};
+		600000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aednowoffline.appTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AEDNowOffline.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AEDNowOffline";
+			};
+			name = Release;
+		};
+		600000000000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aednowoffline.appUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = AEDNowOffline;
+			};
+			name = Debug;
+		};
+		600000000000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aednowoffline.appUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = AEDNowOffline;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		500000000000000000000001 /* Build configuration list for PBXProject "AEDNowOffline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600000000000000000000001 /* Debug */,
+				600000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		500000000000000000000002 /* Build configuration list for PBXNativeTarget "AEDNowOffline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600000000000000000000003 /* Debug */,
+				600000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		500000000000000000000003 /* Build configuration list for PBXNativeTarget "AEDNowOfflineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600000000000000000000005 /* Debug */,
+				600000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		500000000000000000000004 /* Build configuration list for PBXNativeTarget "AEDNowOfflineUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600000000000000000000007 /* Debug */,
+				600000000000000000000008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000000000000000000000001 /* Project object */;
+}
