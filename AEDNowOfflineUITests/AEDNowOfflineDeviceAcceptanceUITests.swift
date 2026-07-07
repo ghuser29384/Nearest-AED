@@ -173,6 +173,16 @@ final class AEDNowOfflineDeviceAcceptanceUITests: XCTestCase {
     }
 
     private func saveEvidence(_ name: String) {
+        let screenshotAttachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        screenshotAttachment.name = "\(name).png"
+        screenshotAttachment.lifetime = .keepAlways
+        add(screenshotAttachment)
+
+        let hierarchyAttachment = XCTAttachment(string: app.debugDescription)
+        hierarchyAttachment.name = "\(name)-accessibility.txt"
+        hierarchyAttachment.lifetime = .keepAlways
+        add(hierarchyAttachment)
+
         guard let directory = ProcessInfo.processInfo.environment["QA_EVIDENCE_DIR"],
               !directory.isEmpty
         else {
@@ -204,6 +214,11 @@ final class AEDNowOfflineDeviceAcceptanceUITests: XCTestCase {
         let body = labels.map { label in
             "\(label): \(app.buttons[label].exists ? "button exists with matching accessibility label" : "missing")"
         }.joined(separator: "\n")
+
+        let attachment = XCTAttachment(string: body)
+        attachment.name = "06-voice-control-show-names-label-audit.txt"
+        attachment.lifetime = .keepAlways
+        add(attachment)
 
         do {
             try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
