@@ -48,4 +48,14 @@ jobs:
         run: Tools/validate_local.sh
 
       - name: Run iPhone 13 acceptance tests
+        env:
+          QA_EVIDENCE_DIR: ${{ github.workspace }}/QA_Evidence/iPhone13
         run: Tools/run_iphone13_acceptance.sh
+
+      - name: Upload iPhone 13 QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iphone13-qa-evidence
+          path: QA_Evidence
+          if-no-files-found: warn
