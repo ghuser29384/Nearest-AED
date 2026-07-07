@@ -220,6 +220,17 @@ def check_app_source_manifest() -> None:
             details.append("missing: " + ", ".join(missing))
         fail("app source manifest drift; " + "; ".join(details))
 
+    compiled = sorted(str(path.relative_to(ROOT)) for path in compiled_app_swift_files())
+    if compiled != expected:
+        extra = sorted(set(compiled) - set(expected))
+        missing = sorted(set(expected) - set(compiled))
+        details = []
+        if extra:
+            details.append("extra compiled: " + ", ".join(extra))
+        if missing:
+            details.append("missing from app target: " + ", ".join(missing))
+        fail("app target source phase drift; " + "; ".join(details))
+
 
 def check_update_system_contract() -> None:
     offenders: list[str] = []

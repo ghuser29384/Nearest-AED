@@ -369,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				300000000000000000000001 /* AEDNowOfflineApp.swift in Sources */,
 				300000000000000000000002 /* AppRouting.swift in Sources */,
 				300000000000000000000003 /* EmergencyHomeView.swift in Sources */,
 				300000000000000000000004 /* RunnerModeView.swift in Sources */,
