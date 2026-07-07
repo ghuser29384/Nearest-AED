@@ -8,6 +8,7 @@ DEVICE_NAME="iPhone 13"
 DEVICE_TYPE="com.apple.CoreSimulator.SimDeviceType.iPhone-13"
 DESTINATION_EXACT="platform=iOS Simulator,name=iPhone 13,OS=18.7.8"
 DESTINATION_LATEST="platform=iOS Simulator,name=iPhone 13"
+EXACT_RUNTIME_LABEL="iOS 18.7.8"
 
 if ! command -v xcodebuild >/dev/null 2>&1; then
   echo "xcodebuild is not available. Install/select Xcode with the iOS 18 simulator runtime." >&2
@@ -27,6 +28,8 @@ if ! xcrun --find simctl >/dev/null 2>&1; then
   exit 1
 fi
 
+RUNTIMES="$(xcrun simctl list runtimes available)"
+
 if ! xcrun simctl list devices available | grep -q "$DEVICE_NAME"; then
   if ! xcrun simctl list devicetypes | grep -q "$DEVICE_TYPE"; then
     echo "iPhone 13 simulator device type is not available in the selected Xcode." >&2
@@ -34,7 +37,7 @@ if ! xcrun simctl list devices available | grep -q "$DEVICE_NAME"; then
   fi
 
   RUNTIME_IDENTIFIER="$(
-    xcrun simctl list runtimes available \
+    printf "%s\n" "$RUNTIMES" \
       | awk '/iOS 18/ { runtime = $NF } END { print runtime }'
   )"
   if [[ -z "$RUNTIME_IDENTIFIER" ]]; then
@@ -50,20 +53,27 @@ if ! xcrun simctl list devices available | grep -q "$DEVICE_NAME"; then
   exit 1
 fi
 
-set +e
-xcodebuild \
-  -project "$PROJECT" \
-  -scheme "$SCHEME" \
-  -destination "$DESTINATION_EXACT" \
-  test
-status=$?
-set -e
-
-if [[ $status -ne 0 ]]; then
-  echo "Exact iOS 18.7.8 runtime was not usable. Retrying with the installed iPhone 13 runtime." >&2
+if printf "%s\n" "$RUNTIMES" | grep -q "$EXACT_RUNTIME_LABEL"; then
+  set +e
   xcodebuild \
     -project "$PROJECT" \
     -scheme "$SCHEME" \
-    -destination "$DESTINATION_LATEST" \
+    -destination "$DESTINATION_EXACT" \
     test
+  status=$?
+  set -e
+
+  if [[ $status -eq 0 ]]; then
+    exit 0
+  fi
+
+  echo "Exact iOS 18.7.8 runtime was not usable. Retrying with the installed iPhone 13 runtime." >&2
+else
+  echo "Exact iOS 18.7.8 runtime is not installed. Running the installed iOS 18 iPhone 13 runtime." >&2
 fi
+
+xcodebuild \
+  -project "$PROJECT" \
+  -scheme "$SCHEME" \
+  -destination "$DESTINATION_LATEST" \
+  test
