@@ -417,7 +417,7 @@ def check_deployment_target() -> None:
         'run_xcodebuild_test "platform=iOS Simulator,id=$LATEST_DEVICE_UDID"',
         "XCODEBUILD_LOG",
         "PIPESTATUS",
-        "::error title=xcodebuild acceptance failed::",
+        "::error title=xcodebuild acceptance failure summary::",
         "-parallel-testing-enabled NO",
         "test",
     )

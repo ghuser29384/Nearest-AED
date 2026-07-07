@@ -22,9 +22,21 @@ import sys
 from pathlib import Path
 
 log = Path(sys.argv[1])
-tail = "\n".join(log.read_text(errors="replace").splitlines()[-80:]) if log.exists() else "xcodebuild log missing"
-tail = tail.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
-print(f"::error title=xcodebuild acceptance failed::{tail}")
+lines = log.read_text(errors="replace").splitlines() if log.exists() else ["xcodebuild log missing"]
+markers = (
+    " error: ",
+    ": error:",
+    " failed (",
+    "Test Case '-[",
+    "Failing tests:",
+    "XCTAssert",
+    "** TEST FAILED **",
+    "Testing failed:",
+)
+matches = [line for line in lines if any(marker in line for marker in markers)]
+summary = "\n".join(matches[-40:] or lines[-40:])
+summary = summary.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+print(f"::error title=xcodebuild acceptance failure summary::{summary}")
 PY
   fi
 }
