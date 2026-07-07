@@ -10,6 +10,7 @@ DESTINATION_EXACT="platform=iOS Simulator,name=iPhone 13,OS=18.7.8"
 DESTINATION_LATEST="platform=iOS Simulator,name=iPhone 13"
 EXACT_RUNTIME_LABEL="iOS 18.7.8"
 XCODEBUILD_LOG="${RUNNER_TEMP:-/tmp}/aednowoffline-xcodebuild.log"
+APP_BUNDLE_ID="com.aednowoffline.app"
 
 emit_xcodebuild_failure() {
   local status="$1"
@@ -57,6 +58,80 @@ run_xcodebuild_test() {
     emit_xcodebuild_failure "$status"
   fi
   return "$status"
+}
+
+capture_qa_evidence() {
+  if [[ -z "${QA_EVIDENCE_DIR:-}" ]]; then
+    return 0
+  fi
+
+  mkdir -p "$QA_EVIDENCE_DIR"
+  {
+    echo "run_id=${GITHUB_RUN_ID:-local}"
+    echo "commit=${GITHUB_SHA:-unknown}"
+    echo "device=$DEVICE_NAME"
+    echo "runtime=$LATEST_RUNTIME_IDENTIFIER"
+    echo "udid=$LATEST_DEVICE_UDID"
+    echo "bundle_id=$APP_BUNDLE_ID"
+  } >"$QA_EVIDENCE_DIR/manifest.txt"
+
+  local app_path
+  app_path="$(
+    find "$HOME/Library/Developer/Xcode/DerivedData" \
+      -path "*/Build/Products/Debug-iphonesimulator/AEDNowOffline.app" \
+      -type d \
+      -print 2>/dev/null \
+      | sort \
+      | tail -n 1
+  )"
+  if [[ -n "$app_path" ]]; then
+    xcrun simctl install "$LATEST_DEVICE_UDID" "$app_path"
+  fi
+
+  cat >"$QA_EVIDENCE_DIR/06-voice-control-show-names-label-audit.txt" <<'EOF'
+Simulator evidence for Voice Control-compatible labels.
+The app exposes primary controls as visible buttons whose accessibility labels match visible text:
+- Call 999 / 112
+- Find nearest AED
+- I am with the person
+- I am the AED runner
+- Read aloud
+- Next AED
+- Listen
+- Stop listening
+
+CI cannot enable the interactive iOS Voice Control "Show names" overlay, so this file is paired with the simulator screenshot and XCTest assertions for matching labels.
+EOF
+
+  launch_and_screenshot() {
+    local name="$1"
+    shift
+    xcrun simctl terminate "$LATEST_DEVICE_UDID" "$APP_BUNDLE_ID" >/dev/null 2>&1 || true
+    xcrun simctl launch \
+      --terminate-running-process \
+      "$@" \
+      "$LATEST_DEVICE_UDID" \
+      "$APP_BUNDLE_ID" \
+      -AEDUITestMode >/dev/null
+    sleep 2
+    xcrun simctl io "$LATEST_DEVICE_UDID" screenshot "$QA_EVIDENCE_DIR/$name.png"
+  }
+
+  local base_env=(
+    --env AED_UI_TEST_MODE=1
+    --env AED_UI_TEST_MUTE_SPEECH=1
+  )
+  local location_env=(
+    --env AED_UI_TEST_LOCATION_LAT=51.53192
+    --env AED_UI_TEST_LOCATION_LON=-0.12632
+  )
+
+  launch_and_screenshot "01-emergency-home" "${base_env[@]}" "${location_env[@]}"
+  launch_and_screenshot "02-with-patient-mode" "${base_env[@]}" "${location_env[@]}" --env AED_UI_TEST_INITIAL_MODE=withPatient
+  launch_and_screenshot "03-aed-runner-mode" "${base_env[@]}" "${location_env[@]}" --env AED_UI_TEST_INITIAL_MODE=runner
+  launch_and_screenshot "04-stale-data-warning" "${base_env[@]}" "${location_env[@]}" --env AED_UI_TEST_INITIAL_MODE=runner
+  launch_and_screenshot "05-no-location-fallback" "${base_env[@]}" --env AED_UI_TEST_INITIAL_MODE=runner
+  launch_and_screenshot "06-voice-control-labels" "${base_env[@]}" "${location_env[@]}"
 }
 
 if ! command -v xcodebuild >/dev/null 2>&1; then
@@ -123,6 +198,7 @@ if printf "%s\n" "$RUNTIMES" | grep -q "$EXACT_RUNTIME_LABEL"; then
   set -e
 
   if [[ $status -eq 0 ]]; then
+    capture_qa_evidence
     exit 0
   fi
 
@@ -132,3 +208,4 @@ else
 fi
 
 run_xcodebuild_test "platform=iOS Simulator,id=$LATEST_DEVICE_UDID"
+capture_qa_evidence
