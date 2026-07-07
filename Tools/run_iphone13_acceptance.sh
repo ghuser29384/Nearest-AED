@@ -27,7 +27,6 @@ markers = (
     " error: ",
     ": error:",
     " failed (",
-    "Test Case '-[",
     "Failing tests:",
     "XCTAssert",
     "** TEST FAILED **",
