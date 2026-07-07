@@ -204,13 +204,6 @@ final class AEDNowOfflineDeviceAcceptanceUITests: XCTestCase {
     }
 
     private func saveLabelAudit(_ labels: [String]) {
-        guard let directory = ProcessInfo.processInfo.environment["QA_EVIDENCE_DIR"],
-              !directory.isEmpty
-        else {
-            return
-        }
-
-        let directoryURL = URL(fileURLWithPath: directory, isDirectory: true)
         let body = labels.map { label in
             "\(label): \(app.buttons[label].exists ? "button exists with matching accessibility label" : "missing")"
         }.joined(separator: "\n")
@@ -220,6 +213,13 @@ final class AEDNowOfflineDeviceAcceptanceUITests: XCTestCase {
         attachment.lifetime = .keepAlways
         add(attachment)
 
+        guard let directory = ProcessInfo.processInfo.environment["QA_EVIDENCE_DIR"],
+              !directory.isEmpty
+        else {
+            return
+        }
+
+        let directoryURL = URL(fileURLWithPath: directory, isDirectory: true)
         do {
             try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
             try body.write(
