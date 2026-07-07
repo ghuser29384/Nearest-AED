@@ -30,25 +30,39 @@ fi
 
 RUNTIMES="$(xcrun simctl list runtimes available)"
 
-if ! xcrun simctl list devices available | grep -q "$DEVICE_NAME"; then
-  if ! xcrun simctl list devicetypes | grep -q "$DEVICE_TYPE"; then
-    echo "iPhone 13 simulator device type is not available in the selected Xcode." >&2
-    exit 1
-  fi
-
-  RUNTIME_IDENTIFIER="$(
-    printf "%s\n" "$RUNTIMES" \
-      | awk '/iOS 18/ { runtime = $NF } END { print runtime }'
-  )"
-  if [[ -z "$RUNTIME_IDENTIFIER" ]]; then
-    echo "No available iOS 18 simulator runtime found. Install an iOS 18 runtime in Xcode." >&2
-    exit 1
-  fi
-
-  xcrun simctl create "$DEVICE_NAME" "$DEVICE_TYPE" "$RUNTIME_IDENTIFIER" >/dev/null
+if ! xcrun simctl list devicetypes | grep -q "$DEVICE_TYPE"; then
+  echo "iPhone 13 simulator device type is not available in the selected Xcode." >&2
+  exit 1
 fi
 
-if ! xcrun simctl list devices available | grep -q "$DEVICE_NAME"; then
+LATEST_RUNTIME_IDENTIFIER="$(
+  printf "%s\n" "$RUNTIMES" \
+    | awk '/iOS 18/ { runtime = $NF } END { print runtime }'
+)"
+if [[ -z "$LATEST_RUNTIME_IDENTIFIER" ]]; then
+  echo "No available iOS 18 simulator runtime found. Install an iOS 18 runtime in Xcode." >&2
+  exit 1
+fi
+
+device_udid_for_runtime() {
+  xcrun simctl list devices available "$1" \
+    | python3 -c 'import re, sys
+name = sys.argv[1]
+for line in sys.stdin:
+    if name not in line:
+        continue
+    match = re.search(r"\(([0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12})\)", line)
+    if match:
+        print(match.group(1))
+        break' "$DEVICE_NAME"
+}
+
+LATEST_DEVICE_UDID="$(device_udid_for_runtime "$LATEST_RUNTIME_IDENTIFIER")"
+if [[ -z "$LATEST_DEVICE_UDID" ]]; then
+  LATEST_DEVICE_UDID="$(xcrun simctl create "$DEVICE_NAME" "$DEVICE_TYPE" "$LATEST_RUNTIME_IDENTIFIER")"
+fi
+
+if ! xcrun simctl list devices available | grep -q "$LATEST_DEVICE_UDID"; then
   echo "No available iPhone 13 simulator found or creatable with the installed iOS 18 runtime." >&2
   exit 1
 fi
@@ -75,5 +89,5 @@ fi
 xcodebuild \
   -project "$PROJECT" \
   -scheme "$SCHEME" \
-  -destination "$DESTINATION_LATEST" \
+  -destination "platform=iOS Simulator,id=$LATEST_DEVICE_UDID" \
   test

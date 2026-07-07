@@ -380,9 +380,11 @@ def check_deployment_target() -> None:
         "xcrun simctl list runtimes available",
         "xcrun simctl create",
         "com.apple.CoreSimulator.SimDeviceType.iPhone-13",
-        'grep -q "$DEVICE_NAME"',
+        "device_udid_for_runtime",
+        "LATEST_DEVICE_UDID",
+        'grep -q "$LATEST_DEVICE_UDID"',
         '-destination "$DESTINATION_EXACT"',
-        '-destination "$DESTINATION_LATEST"',
+        '-destination "platform=iOS Simulator,id=$LATEST_DEVICE_UDID"',
         "test",
     )
     missing_script = [pattern for pattern in required_script if pattern not in script]

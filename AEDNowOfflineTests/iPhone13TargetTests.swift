@@ -57,8 +57,10 @@ final class iPhone13TargetTests: XCTestCase {
         XCTAssertTrue(script.contains("xcrun simctl list runtimes available"))
         XCTAssertTrue(script.contains("xcrun simctl create"))
         XCTAssertTrue(script.contains("com.apple.CoreSimulator.SimDeviceType.iPhone-13"))
+        XCTAssertTrue(script.contains("device_udid_for_runtime"))
+        XCTAssertTrue(script.contains("LATEST_DEVICE_UDID"))
         XCTAssertTrue(script.contains("-destination \"$DESTINATION_EXACT\""))
-        XCTAssertTrue(script.contains("-destination \"$DESTINATION_LATEST\""))
+        XCTAssertTrue(script.contains("-destination \"platform=iOS Simulator,id=$LATEST_DEVICE_UDID\""))
         XCTAssertTrue(script.contains("test"))
     }
 
