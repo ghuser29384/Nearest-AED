@@ -9,6 +9,44 @@ DEVICE_TYPE="com.apple.CoreSimulator.SimDeviceType.iPhone-13"
 DESTINATION_EXACT="platform=iOS Simulator,name=iPhone 13,OS=18.7.8"
 DESTINATION_LATEST="platform=iOS Simulator,name=iPhone 13"
 EXACT_RUNTIME_LABEL="iOS 18.7.8"
+XCODEBUILD_LOG="${RUNNER_TEMP:-/tmp}/aednowoffline-xcodebuild.log"
+
+emit_xcodebuild_failure() {
+  local status="$1"
+  echo "xcodebuild failed with status $status. Last log lines:" >&2
+  tail -n 160 "$XCODEBUILD_LOG" >&2 || true
+
+  if [[ -n "${GITHUB_ACTIONS:-}" ]]; then
+    python3 - "$XCODEBUILD_LOG" <<'PY'
+import sys
+from pathlib import Path
+
+log = Path(sys.argv[1])
+tail = "\n".join(log.read_text(errors="replace").splitlines()[-80:]) if log.exists() else "xcodebuild log missing"
+tail = tail.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+print(f"::error title=xcodebuild acceptance failed::{tail}")
+PY
+  fi
+}
+
+run_xcodebuild_test() {
+  local destination="$1"
+  rm -f "$XCODEBUILD_LOG"
+  set +e
+  NSUnbufferedIO=YES xcodebuild \
+    -project "$PROJECT" \
+    -scheme "$SCHEME" \
+    -destination "$destination" \
+    -parallel-testing-enabled NO \
+    test 2>&1 | tee "$XCODEBUILD_LOG"
+  local status=${PIPESTATUS[0]}
+  set -e
+
+  if [[ $status -ne 0 ]]; then
+    emit_xcodebuild_failure "$status"
+  fi
+  return "$status"
+}
 
 if ! command -v xcodebuild >/dev/null 2>&1; then
   echo "xcodebuild is not available. Install/select Xcode with the iOS 18 simulator runtime." >&2
@@ -69,11 +107,7 @@ fi
 
 if printf "%s\n" "$RUNTIMES" | grep -q "$EXACT_RUNTIME_LABEL"; then
   set +e
-  xcodebuild \
-    -project "$PROJECT" \
-    -scheme "$SCHEME" \
-    -destination "$DESTINATION_EXACT" \
-    test
+  run_xcodebuild_test "$DESTINATION_EXACT"
   status=$?
   set -e
 
@@ -86,8 +120,4 @@ else
   echo "Exact iOS 18.7.8 runtime is not installed. Running the installed iOS 18 iPhone 13 runtime." >&2
 fi
 
-xcodebuild \
-  -project "$PROJECT" \
-  -scheme "$SCHEME" \
-  -destination "platform=iOS Simulator,id=$LATEST_DEVICE_UDID" \
-  test
+run_xcodebuild_test "platform=iOS Simulator,id=$LATEST_DEVICE_UDID"

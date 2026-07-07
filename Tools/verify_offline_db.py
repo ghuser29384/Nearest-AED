@@ -412,8 +412,13 @@ def check_deployment_target() -> None:
         "device_udid_for_runtime",
         "LATEST_DEVICE_UDID",
         'grep -q "$LATEST_DEVICE_UDID"',
-        '-destination "$DESTINATION_EXACT"',
-        '-destination "platform=iOS Simulator,id=$LATEST_DEVICE_UDID"',
+        "run_xcodebuild_test",
+        'run_xcodebuild_test "$DESTINATION_EXACT"',
+        'run_xcodebuild_test "platform=iOS Simulator,id=$LATEST_DEVICE_UDID"',
+        "XCODEBUILD_LOG",
+        "PIPESTATUS",
+        "::error title=xcodebuild acceptance failed::",
+        "-parallel-testing-enabled NO",
         "test",
     )
     missing_script = [pattern for pattern in required_script if pattern not in script]
